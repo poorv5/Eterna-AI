@@ -1,7 +1,7 @@
 =======
-# LifeGPT: Topology-Agnostic Generative Pretrained Transformer Model for Cellular Automata
+# Eterna AI: Topology-Agnostic Generative Pretrained Transformer Model for Cellular Automata
 
-The Game of Life (Life), a well known algorithm within the broader class of cellular automata (CA), exhibits complex emergent dynamics, with extreme sensitivity to initial conditions. Modeling and predicting such intricate behavior without explicit knowledge of the system's underlying topology presents a significant challenge, motivating the development of algorithms that can generalize across various grid configurations and boundary conditions. We develop a decoder-only generative pretrained transformer model to solve this problem, showing that our model can simulate Life on a toroidal grid with no prior knowledge on the size of the grid, or its periodic boundary conditions (LifeGPT). LifeGPT is topology-agnostic with respect to its training data and our results show that a GPT model is capable of capturing the deterministic rules of a Turing-complete system with near-perfect accuracy, given sufficiently diverse training data. We also introduce the idea of an `autoregressive autoregressor' to recursively implement Life using LifeGPT. Our results pave the path towards true universal computation within a large language model (LLM) framework, synthesizing of mathematical analysis with natural language processing, and probing AI systems for situational awareness about the evolution of such algorithms without ever having to compute them. Similar GPTs could potentially solve inverse problems in multicellular self-assembly by extracting CA-compatible rulesets from real-world biological systems to create new predictive models, which would have significant consequences for the fields of bioinspired materials, tissue engineering, and architected materials design.
+The Game of Life (Life), a well known algorithm within the broader class of cellular automata (CA), exhibits complex emergent dynamics, with extreme sensitivity to initial conditions. Modeling and predicting such intricate behavior without explicit knowledge of the system's underlying topology presents a significant challenge, motivating the development of algorithms that can generalize across various grid configurations and boundary conditions. We develop a decoder-only generative pretrained transformer model to solve this problem, showing that our model can simulate Life on a toroidal grid with no prior knowledge on the size of the grid, or its periodic boundary conditions (Eterna AI). Eterna AI is topology-agnostic with respect to its training data and our results show that a GPT model is capable of capturing the deterministic rules of a Turing-complete system with near-perfect accuracy, given sufficiently diverse training data. We also introduce the idea of an `autoregressive autoregressor' to recursively implement Life using Eterna AI. Our results pave the path towards true universal computation within a large language model (LLM) framework, synthesizing of mathematical analysis with natural language processing, and probing AI systems for situational awareness about the evolution of such algorithms without ever having to compute them. Similar GPTs could potentially solve inverse problems in multicellular self-assembly by extracting CA-compatible rulesets from real-world biological systems to create new predictive models, which would have significant consequences for the fields of bioinspired materials, tissue engineering, and architected materials design.
 
 ![image/png](https://cdn-uploads.huggingface.co/production/uploads/623ce1c6b66fedf374859fe7/SbfQH-6_ZUHMgmr60BVw-.png)
 
@@ -10,9 +10,9 @@ The Game of Life (Life), a well known algorithm within the broader class of cell
 
 ## Setting Up the Conda Environment
 
-To set up the Conda environment for this project, you will use the `LifeGPT_env.yml` file provided in this repository. This file contains all the necessary dependencies and package versions to ensure the environment is consistent with what the project requires.
+To set up the Conda environment for this project, you will use the `Eterna-AI_env.yml` file provided in this repository. This file contains all the necessary dependencies and package versions to ensure the environment is consistent with what the project requires.
 
-### Step-by-Step Guide to Create the LifeGPT Conda Environment
+### Step-by-Step Guide to Create the EternaAI Conda Environment
 
 1. **Install Conda (if not already installed):**
    
@@ -23,26 +23,26 @@ To set up the Conda environment for this project, you will use the `LifeGPT_env.
    First, clone this GitHub repository to your local machine:
 
    ```bash
-   git clone https://github.com/lamm-mit/LifeGPT.git
-   cd LifeGPT
+   git clone https://github.com/lamm-mit/Eterna-AI.git
+   cd Eterna-AI
    ```
 
 3. **Create the Conda Environment:**
 
-    Use the LifeGPT_env.yml file to create a new Conda environment. Run the following command in your terminal:
+    Use the Eterna-AI_env.yml file to create a new Conda environment. Run the following command in your terminal:
 
    ```bash
-    conda env create -f LifeGPT_env.yml
+    conda env create -f Eterna-AI_env.yml
     ```
 
-This command will create a new environment named LifeGPT_env with all the dependencies specified in the .yml file.
+This command will create a new environment named Eterna-AI_env with all the dependencies specified in the .yml file.
 
 4. **Activate the Conda Environment:**
 
     Once the environment is created, activate it using the following command:
 
     ```bash
-    conda activate LifeGPT_env
+    conda activate Eterna-AI_env
     ```
 5. **Verify the Environment:**
 
@@ -54,10 +54,10 @@ This command will create a new environment named LifeGPT_env with all the depend
 
 6. **Updating the Environment:**
 
-    If there are changes in the required packages or if the environment needs to be updated, modify the LifeGPT_env.yml file accordingly, and then update the environment with:
+    If there are changes in the required packages or if the environment needs to be updated, modify the Eterna-AI_env.yml file accordingly, and then update the environment with:
 
     ```bash
-    conda env update --file LifeGPT_env.yml --prune
+    conda env update --file Eterna-AI_env.yml --prune
     ```
 
 7. **Deactivating the Environment:**
@@ -73,15 +73,15 @@ This command will create a new environment named LifeGPT_env with all the depend
     If you need to remove the environment at any point, use:
     
     ```bash
-    conda remove --name LifeGPT_env --all
+    conda remove --name Eterna-AI_env --all
     ```
 
 ## Datasets
-Included in this repository, in the subfolder [LifeGPT](https://github.com/lamm-mit/LifeGPT/tree/main/LifeGPT), are several csv files corresponding to training, validation, and testing data.
+Included in this repository, in the subfolder [Eterna-AI](https://github.com/lamm-mit/Eterna-AI/tree/main/Eterna-AI), are several csv files corresponding to training, validation, and testing data.
 ### Overview of Dataset Types
 1. **Testing Data:**
 
-Both testing data files ([conway_test_states_32by32_20240716_151502.csv](https://github.com/lamm-mit/LifeGPT/blob/main/LifeGPT/conway_test_states_32by32_20240716_151502.csv) and [conway_test_states_32by32_20240827_172807.csv](https://github.com/lamm-mit/LifeGPT/blob/main/LifeGPT/conway_test_states_32by32_20240827_172807.csv)) correspond to the same initial conditions (ICs). They are distinct because [conway_test_states_32by32_20240716_151502.csv](https://github.com/lamm-mit/LifeGPT/blob/main/LifeGPT/conway_test_states_32by32_20240716_151502.csv) contains a total of 10 timesteps for Life, while [conway_test_states_32by32_20240827_172807.csv](https://github.com/lamm-mit/LifeGPT/blob/main/LifeGPT/conway_test_states_32by32_20240827_172807.csv) contains 250 timesteps. These data are used for accuracy benchmarking (see [Accuracy_Benchmarking.ipynb](https://github.com/lamm-mit/LifeGPT/blob/main/Accuracy_Benchmarking.ipynb)), as well as for comparison with 'ground truth' (GT) in the case of the 'autoregressive autoregressor' (ARAR) -- see [ARAR_249_iterations.ipynb](https://github.com/lamm-mit/LifeGPT/blob/main/ARAR_249_iterations.ipynb) and [ARAR_9_iterations.ipynb](https://github.com/lamm-mit/LifeGPT/blob/main/ARAR_9_iterations.ipynb).
+Both testing data files ([conway_test_states_32by32_20240716_151502.csv](https://github.com/lamm-mit/Eterna-AI/blob/main/Eterna-AI/conway_test_states_32by32_20240716_151502.csv) and [conway_test_states_32by32_20240827_172807.csv](https://github.com/lamm-mit/Eterna-AI/blob/main/Eterna-AI/conway_test_states_32by32_20240827_172807.csv)) correspond to the same initial conditions (ICs). They are distinct because [conway_test_states_32by32_20240716_151502.csv](https://github.com/lamm-mit/Eterna-AI/blob/main/Eterna-AI/conway_test_states_32by32_20240716_151502.csv) contains a total of 10 timesteps for Life, while [conway_test_states_32by32_20240827_172807.csv](https://github.com/lamm-mit/Eterna-AI/blob/main/Eterna-AI/conway_test_states_32by32_20240827_172807.csv) contains 250 timesteps. These data are used for accuracy benchmarking (see [Accuracy_Benchmarking.ipynb](https://github.com/lamm-mit/Eterna-AI/blob/main/Accuracy_Benchmarking.ipynb)), as well as for comparison with 'ground truth' (GT) in the case of the 'autoregressive autoregressor' (ARAR) -- see [ARAR_249_iterations.ipynb](https://github.com/lamm-mit/Eterna-AI/blob/main/ARAR_249_iterations.ipynb) and [ARAR_9_iterations.ipynb](https://github.com/lamm-mit/Eterna-AI/blob/main/ARAR_9_iterations.ipynb).
 
 2. **Training and Validation Data:**
 
@@ -89,29 +89,29 @@ In addition, there are 2 files corresponding to training data, and 2 files corre
     
 a. *High-Entropy:*
 
-High-entropy data is defined as data which contains stochastically generated ICs, where there is an equal expected value of finding live (1-state) or dead (0-state) cells. We include a 10000-sample high-entropy dataset for training ([conway_states_0.5_0.5_10000by32by32by10_toroidal_20240813_224815_sorder0.5_eorder0.5.csv](https://github.com/lamm-mit/LifeGPT/blob/main/LifeGPT/conway_states_0.5_0.5_10000by32by32by10_toroidal_20240813_224815_sorder0.5_eorder0.5.csv)) and a 1000-sample high-entropy dataset for finding validation losses ([conway_states_0.5_0.5_1000by32by32by10_toroidal_20240813_224611_sorder0.5_eorder0.5.csv](https://github.com/lamm-mit/LifeGPT/blob/main/LifeGPT/conway_states_0.5_0.5_1000by32by32by10_toroidal_20240813_224611_sorder0.5_eorder0.5.csv)). 
+High-entropy data is defined as data which contains stochastically generated ICs, where there is an equal expected value of finding live (1-state) or dead (0-state) cells. We include a 10000-sample high-entropy dataset for training ([conway_states_0.5_0.5_10000by32by32by10_toroidal_20240813_224815_sorder0.5_eorder0.5.csv](https://github.com/lamm-mit/Eterna-AI/blob/main/Eterna-AI/conway_states_0.5_0.5_10000by32by32by10_toroidal_20240813_224815_sorder0.5_eorder0.5.csv)) and a 1000-sample high-entropy dataset for finding validation losses ([conway_states_0.5_0.5_1000by32by32by10_toroidal_20240813_224611_sorder0.5_eorder0.5.csv](https://github.com/lamm-mit/Eterna-AI/blob/main/Eterna-AI/conway_states_0.5_0.5_1000by32by32by10_toroidal_20240813_224611_sorder0.5_eorder0.5.csv)). 
 
 b. *Broad-Entropy:*
 
-Broad-entropy data is defined as data which contains stochastically generated ICs, where each sample in the dataset is generated with an order parameter ranging linearly from 0 to 1, where the order parameter may be interpreted as the expected value of the probability of finding a 1 in the corresponding IC. We include a 10000-sample broad-entropy dataset for training ([conway_states_0_1_10000by32by32by10_toroidal_20240711_133408.csv](https://github.com/lamm-mit/LifeGPT/blob/main/LifeGPT/conway_states_0_1_10000by32by32by10_toroidal_20240711_133408.csv)) and a 1000-sample broad-entropy dataset for finding validation losses ([conway_states_0_1_1000by32by32by10_toroidal_20240711_151806.csv](https://github.com/lamm-mit/LifeGPT/blob/main/LifeGPT/conway_states_0_1_1000by32by32by10_toroidal_20240711_151806.csv)).
+Broad-entropy data is defined as data which contains stochastically generated ICs, where each sample in the dataset is generated with an order parameter ranging linearly from 0 to 1, where the order parameter may be interpreted as the expected value of the probability of finding a 1 in the corresponding IC. We include a 10000-sample broad-entropy dataset for training ([conway_states_0_1_10000by32by32by10_toroidal_20240711_133408.csv](https://github.com/lamm-mit/Eterna-AI/blob/main/Eterna-AI/conway_states_0_1_10000by32by32by10_toroidal_20240711_133408.csv)) and a 1000-sample broad-entropy dataset for finding validation losses ([conway_states_0_1_1000by32by32by10_toroidal_20240711_151806.csv](https://github.com/lamm-mit/Eterna-AI/blob/main/Eterna-AI/conway_states_0_1_1000by32by32by10_toroidal_20240711_151806.csv)).
 
 3. **Example Data:**
 
-For demonstrative purposes, we also include two datasets ([EXAMPLE_conway_states_0_1_100by50by50by20_toroidal_20240821_152545.csv](https://github.com/lamm-mit/LifeGPT/blob/main/LifeGPT/EXAMPLE_conway_states_0_1_100by50by50by20_toroidal_20240821_152545.csv) and [EXAMPLE_conway_states_0_1_100by50by50by20_toroidal_20240821_152920.csv](https://github.com/lamm-mit/LifeGPT/blob/main/LifeGPT/EXAMPLE_conway_states_0_1_100by50by50by20_toroidal_20240821_152920.csv)) which showcases the ability of our dataset generator script, [training_set_gen.ipynb](https://github.com/lamm-mit/LifeGPT/blob/main/training_set_gen.ipynb), to generate datasets of varying sizes and entropies.
+For demonstrative purposes, we also include two datasets ([EXAMPLE_conway_states_0_1_100by50by50by20_toroidal_20240821_152545.csv](https://github.com/lamm-mit/Eterna-AI/blob/main/Eterna-AI/EXAMPLE_conway_states_0_1_100by50by50by20_toroidal_20240821_152545.csv) and [EXAMPLE_conway_states_0_1_100by50by50by20_toroidal_20240821_152920.csv](https://github.com/lamm-mit/Eterna-AI/blob/main/Eterna-AI/EXAMPLE_conway_states_0_1_100by50by50by20_toroidal_20240821_152920.csv)) which showcases the ability of our dataset generator script, [training_set_gen.ipynb](https://github.com/lamm-mit/Eterna-AI/blob/main/training_set_gen.ipynb), to generate datasets of varying sizes and entropies.
 
 ### Tutorial on Dataset Generation
-The Jupyter Notebook [training_set_gen.ipynb](https://github.com/lamm-mit/LifeGPT/blob/main/training_set_gen.ipynb) contains example scripts for generating training, validation, and testing sets. All scripts utilize functions in the ConwayGame class found in [game.py](https://github.com/lamm-mit/LifeGPT/blob/main/conway_lib/game.py), which itself may be found in [conway_lib](https://github.com/lamm-mit/LifeGPT/tree/main/conway_lib).
+The Jupyter Notebook [training_set_gen.ipynb](https://github.com/lamm-mit/Eterna-AI/blob/main/training_set_gen.ipynb) contains example scripts for generating training, validation, and testing sets. All scripts utilize functions in the ConwayGame class found in [game.py](https://github.com/lamm-mit/Eterna-AI/blob/main/conway_lib/game.py), which itself may be found in [conway_lib](https://github.com/lamm-mit/Eterna-AI/tree/main/conway_lib).
 
 ## Training
 ### Prewritten Scripts with Preset Training Parameters
-Included in this repository are two .py files containing prewritten code for training LifeGPT models using different training data and hyperparameters.
+Included in this repository are two .py files containing prewritten code for training Eterna-AI models using different training data and hyperparameters.
 
-The file [LifeGPT_toroidal_rot_pos_on_no_forgetful_mask_high_ent.py](https://github.com/lamm-mit/LifeGPT/blob/main/LifeGPT/LifeGPT_toroidal_rot_pos_on_no_forgetful_mask_high_ent.py) corresponds to training (and periodically benchmarking at temperature=1) a model without forgetful causal masking (FCM), and using high-entropy data.
+The file [Eterna-AI_toroidal_rot_pos_on_no_forgetful_mask_high_ent.py](https://github.com/lamm-mit/Eterna-AI/blob/main/Eterna-AI/Eterna-AI_toroidal_rot_pos_on_no_forgetful_mask_high_ent.py) corresponds to training (and periodically benchmarking at temperature=1) a model without forgetful causal masking (FCM), and using high-entropy data.
 
-The file [LifeGPT_toroidal_rot_pos_on_15_percent_forgetful_mask_broad_ent.py](https://github.com/lamm-mit/LifeGPT/blob/main/LifeGPT/LifeGPT_toroidal_rot_pos_on_15_percent_forgetful_mask_broad_ent.py) corresponds to training (and periodically benchmarking at temperature=1) a model with forgetful causal masking (FCM), and using broad-entropy data.
+The file [Eterna-AI_toroidal_rot_pos_on_15_percent_forgetful_mask_broad_ent.py](https://github.com/lamm-mit/Eterna-AI/blob/main/Eterna-AI/Eterna-AI_toroidal_rot_pos_on_15_percent_forgetful_mask_broad_ent.py) corresponds to training (and periodically benchmarking at temperature=1) a model with forgetful causal masking (FCM), and using broad-entropy data.
 
 ### Training Tutorial
-The following is a walk-through of the process of writing python code for training LifeGPT, with some example hyperparameters from our paper.
+The following is a walk-through of the process of writing python code for training Eterna-AI, with some example hyperparameters from our paper.
 
 0. **Import Modules:**
 ```python
@@ -148,7 +148,7 @@ print(device)
 print("Torch version:", torch.__version__)
 empty_cuda_cache()
 
-data_path = "LifeGPT\\"
+data_path = "Eterna-AI\\"
 train_file = data_path + "conway_states_0_1_10000by32by32by10_toroidal_20240711_133408"+".csv"
 val_file = data_path + "conway_states_0_1_1000by32by32by10_toroidal_20240711_151806"+".csv"
 test_file = data_path + "conway_test_states_32by32_20240716_151502.csv"
@@ -595,7 +595,7 @@ for epoch in range(NUM_EPOCHS):
 
     # Save the model periodically
     if (epoch + 1) % SAVE_EPOCH == 0:
-        torch.save(model.state_dict(), os.path.join(model_dir, f'LifeGPT_v7_epoch_{epoch + 1}.pt'))
+        torch.save(model.state_dict(), os.path.join(model_dir, f'Eterna-AI_v7_epoch_{epoch + 1}.pt'))
         print(f'Model saved at epoch {epoch + 1}')
 
     epoch_end_time = time.time()  # Track the end time of the epoch
@@ -618,9 +618,9 @@ plt.show()
 ```
 # Inference with Trained Weights
 
-There were two methods by which we assessed the zero/few shot capabilities of LifeGPT. Both methods required prompting the model with an initial input sequence of tokens, followed by autoregressive generation for a pre-selected number of tokens (since all games we considered were the same size).
+There were two methods by which we assessed the zero/few shot capabilities of Eterna-AI. Both methods required prompting the model with an initial input sequence of tokens, followed by autoregressive generation for a pre-selected number of tokens (since all games we considered were the same size).
 
-The basic process for all inferencing with LifeGPT is described as follows:
+The basic process for all inferencing with Eterna-AI is described as follows:
 
 1. **Initialize Modules and Relevant Functions:**
 ```python
@@ -710,13 +710,13 @@ def load_model(model_path, max_length, num_words):
 
 ```
 3. **Load Saved Weights Into Model**
-The folder [model_parameters](https://github.com/lamm-mit/LifeGPT/tree/main/model_parameters) contains .pt files, containing the weights of LifeGPT versions from previous training runs. The folder [08_14_2024_Conway_2_State_Jump_Rot_Pos_On_Masking_Off_High_Entropy_Homog_2024-08-14 12-24-10](https://github.com/lamm-mit/LifeGPT/tree/main/model_parameters/08_14_2024_Conway_2_State_Jump_Rot_Pos_On_Masking_Off_High_Entropy_Homog_2024-08-14%2012-24-10) pertains to a training run without the use of FCM, and with high-entropy data, while the folder [07_22_2024_Conway_2_State_Jump_Rot_Pos_On_Masking_On_Broad_Entropy_Homog_2024-07-23 10-37-31](https://github.com/lamm-mit/LifeGPT/tree/main/model_parameters/07_22_2024_Conway_2_State_Jump_Rot_Pos_On_Masking_On_Broad_Entropy_Homog_2024-07-23%2010-37-31) pertains to a training run using FCM (with 15% FCM masking) and with broad-entropy data (best performing). These folders also contain CSV files with data on the training progress of each training run. Note: the accuracies in these CSV files are calculated in a manner such that any instance of LifeGPT generating un-decodable tokens (incompatible with the Tokenizer class) will automatically flag the entire benchmark period as having 0 accuracy. This is not the case in our main benchmarking script ([Accuracy_Benchmarking.ipynb](https://github.com/lamm-mit/LifeGPT/blob/main/Accuracy_Benchmarking.ipynb)).
+The folder [model_parameters](https://github.com/lamm-mit/Eterna-AI/tree/main/model_parameters) contains .pt files, containing the weights of Eterna-AI versions from previous training runs. The folder [08_14_2024_Conway_2_State_Jump_Rot_Pos_On_Masking_Off_High_Entropy_Homog_2024-08-14 12-24-10](https://github.com/lamm-mit/Eterna-AI/tree/main/model_parameters/08_14_2024_Conway_2_State_Jump_Rot_Pos_On_Masking_Off_High_Entropy_Homog_2024-08-14%2012-24-10) pertains to a training run without the use of FCM, and with high-entropy data, while the folder [07_22_2024_Conway_2_State_Jump_Rot_Pos_On_Masking_On_Broad_Entropy_Homog_2024-07-23 10-37-31](https://github.com/lamm-mit/Eterna-AI/tree/main/model_parameters/07_22_2024_Conway_2_State_Jump_Rot_Pos_On_Masking_On_Broad_Entropy_Homog_2024-07-23%2010-37-31) pertains to a training run using FCM (with 15% FCM masking) and with broad-entropy data (best performing). These folders also contain CSV files with data on the training progress of each training run. Note: the accuracies in these CSV files are calculated in a manner such that any instance of Eterna-AI generating un-decodable tokens (incompatible with the Tokenizer class) will automatically flag the entire benchmark period as having 0 accuracy. This is not the case in our main benchmarking script ([Accuracy_Benchmarking.ipynb](https://github.com/lamm-mit/Eterna-AI/blob/main/Accuracy_Benchmarking.ipynb)).
 
 ```python
 epoch=50
 num_words=256
 max_length = 2071 #len("@PredictNextState<1024-bits> [1024-bits]$")
-model_path = f"model_parameters\\07_22_2024_Conway_2_State_Jump_Rot_Pos_On_Masking_On_Broad_Entropy_Homog_2024-07-23 10-37-31\\LifeGPT_epoch_{epoch}.pt"
+model_path = f"model_parameters\\07_22_2024_Conway_2_State_Jump_Rot_Pos_On_Masking_On_Broad_Entropy_Homog_2024-07-23 10-37-31\\Eterna-AI_epoch_{epoch}.pt"
     model = load_model(model_path, max_length, num_words)
 ```
 4. **Properly Tokenize and Reshape the Input Sequence:**
@@ -755,7 +755,7 @@ except Exception as e:
 ```
 ## Accuracy Benchmarking
 
-Accuracy benchmarking is done in the Jupyter Notebook [Accuracy_Benchmarking.ipynb](https://github.com/lamm-mit/LifeGPT/blob/main/Accuracy_Benchmarking.ipynb). For varying combinations of epochs and temperatures, LifeGPT's inferences (predictions) for the next-game-state (NGS) in Life are compared to GT data in the testing dataset, and an accuracy score is calculated. This is only demonstrated for the version of LifeGPT trained on broad-entropy data. Data from this script are recorded in [model_accuracy_results.csv](https://github.com/lamm-mit/LifeGPT/blob/main/model_accuracy_results.csv)
+Accuracy benchmarking is done in the Jupyter Notebook [Accuracy_Benchmarking.ipynb](https://github.com/lamm-mit/Eterna-AI/blob/main/Accuracy_Benchmarking.ipynb). For varying combinations of epochs and temperatures, Eterna-AI's inferences (predictions) for the next-game-state (NGS) in Life are compared to GT data in the testing dataset, and an accuracy score is calculated. This is only demonstrated for the version of Eterna-AI trained on broad-entropy data. Data from this script are recorded in [model_accuracy_results.csv](https://github.com/lamm-mit/Eterna-AI/blob/main/model_accuracy_results.csv)
 
 The following is an image of the training performance (cross-entropy loss vs. epoch) and model accuracy on the testing set.
 
@@ -763,29 +763,29 @@ The following is an image of the training performance (cross-entropy loss vs. ep
 
 ## Determination of Training Set Entropy Effects
 
-Training set entropy effects were characterized within the Jupyter Notebook [Training_Data_Ordering_Investigation.ipynb](https://github.com/lamm-mit/LifeGPT/blob/main/Training_Data_Ordering_Investigation.ipynb). To do this, a 110-sample validation set was stochastically generated using the ConwayGame class found in [game.py](https://github.com/lamm-mit/LifeGPT/blob/main/conway_lib/game.py), which itself may be found in [conway_lib](https://github.com/lamm-mit/LifeGPT/tree/main/conway_lib). 
+Training set entropy effects were characterized within the Jupyter Notebook [Training_Data_Ordering_Investigation.ipynb](https://github.com/lamm-mit/Eterna-AI/blob/main/Training_Data_Ordering_Investigation.ipynb). To do this, a 110-sample validation set was stochastically generated using the ConwayGame class found in [game.py](https://github.com/lamm-mit/Eterna-AI/blob/main/conway_lib/game.py), which itself may be found in [conway_lib](https://github.com/lamm-mit/Eterna-AI/tree/main/conway_lib). 
 
 ## Autoregressive Autoregressor (ARAR)
 
-ARAR is achived through recursive process of inference based on an input token sequence given to LifeGPT, resulting in a new sequence of tokens which are subsequently fed back into the input of LifeGPT. This loop may go on until a desired number of iterations are reached. Our ARAR scripts ([ARAR_9_iterations.ipynb](https://github.com/lamm-mit/LifeGPT/blob/main/ARAR_9_iterations.ipynb) and [ARAR_249_iterations.ipynb](https://github.com/lamm-mit/LifeGPT/blob/main/ARAR_249_iterations.ipynb)) demonstrate the application of this method for running Life in the case of 9 iterations for multiple model temperatures, and 249 iterations for only temperature=0, respectively.
+ARAR is achived through recursive process of inference based on an input token sequence given to Eterna-AI, resulting in a new sequence of tokens which are subsequently fed back into the input of Eterna-AI. This loop may go on until a desired number of iterations are reached. Our ARAR scripts ([ARAR_9_iterations.ipynb](https://github.com/lamm-mit/Eterna-AI/blob/main/ARAR_9_iterations.ipynb) and [ARAR_249_iterations.ipynb](https://github.com/lamm-mit/Eterna-AI/blob/main/ARAR_249_iterations.ipynb)) demonstrate the application of this method for running Life in the case of 9 iterations for multiple model temperatures, and 249 iterations for only temperature=0, respectively.
 
-Note: ARAR only utilizes versions of LifeGPT trained on broad-entropy data.
+Note: ARAR only utilizes versions of Eterna-AI trained on broad-entropy data.
 
-The afformentioned ARAR scripts include code that generates GIF animations and figures (se [Testing_Set_ARAR_Animations_and_Figures](https://github.com/lamm-mit/LifeGPT/tree/main/Testing_Set_ARAR_Animations_and_Figures)) showing the evolution of LifeGPT's recursive NGS predictions, Life (GT), and the discrepancy (error) between the two. GIFs are generated for each sample in the testing set, for differing temperatures and epochs, for 9 iterations of Life. 250 iterations are generated for only one version of LifeGPT (epoch=50, temperature=0) due to time and compute constraints. The following figures give examples of predictions made with ARAR.
+The afformentioned ARAR scripts include code that generates GIF animations and figures (se [Testing_Set_ARAR_Animations_and_Figures](https://github.com/lamm-mit/Eterna-AI/tree/main/Testing_Set_ARAR_Animations_and_Figures)) showing the evolution of Eterna-AI's recursive NGS predictions, Life (GT), and the discrepancy (error) between the two. GIFs are generated for each sample in the testing set, for differing temperatures and epochs, for 9 iterations of Life. 250 iterations are generated for only one version of Eterna-AI (epoch=50, temperature=0) due to time and compute constraints. The following figures give examples of predictions made with ARAR.
 
 ![image/png](https://cdn-uploads.huggingface.co/production/uploads/623ce1c6b66fedf374859fe7/AMKWGJXj4psBwaJ5ZCzs7.png)
 
 
 
 # Miscalleneous
-To best demonstrate our use of a toroidal grid topology (which is functionally the same as periodic boundary conditions), we include a GIF animation of the famous 'glider gun' pattern, from Life, played out on the surface of a 3D torus (see [toroidal_grid_glider_gun.gif](https://github.com/lamm-mit/LifeGPT/raw/main/toroidal_grid_glider_gun.gif)). In this animations, live cells are represented with blue dots, and dead cells are represented as the absence of a dot. The torus is made to be translucent to better illustrate its unique geometry. We hope that this facilitates a more intuitive understanding of the manner in which periodic boundary conditions function with respect to Life. 
+To best demonstrate our use of a toroidal grid topology (which is functionally the same as periodic boundary conditions), we include a GIF animation of the famous 'glider gun' pattern, from Life, played out on the surface of a 3D torus (see [toroidal_grid_glider_gun.gif](https://github.com/lamm-mit/Eterna-AI/raw/main/toroidal_grid_glider_gun.gif)). In this animations, live cells are represented with blue dots, and dead cells are represented as the absence of a dot. The torus is made to be translucent to better illustrate its unique geometry. We hope that this facilitates a more intuitive understanding of the manner in which periodic boundary conditions function with respect to Life. 
 
-![Glider Gun GIF](https://github.com/lamm-mit/LifeGPT/raw/main/toroidal_grid_glider_gun.gif)
+![Glider Gun GIF](https://github.com/lamm-mit/Eterna-AI/raw/main/toroidal_grid_glider_gun.gif)
 
 
 ```bibtex
-@article{berkovich2024lifegpt,
-      title={LifeGPT: Topology-Agnostic Generative Pretrained Transformer Model for Cellular Automata}, 
+@article{berkovich2024Eterna-AI,
+      title={Eterna-AI: Topology-Agnostic Generative Pretrained Transformer Model for Cellular Automata}, 
       author={Jaime A. Berkovich and Markus J. Buehler},
       year={2024},
       eprint={2409.12182},
